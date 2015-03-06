@@ -1,0 +1,27 @@
+{
+        "name"                  : "Tic-Tac-Pro",
+        "version"               : "0.0.1",
+        "description"           : "Tic-Tac-Toe for the pro!",
+        "repository"            : ".",
+        "author"                : "Jason Rivers <jason@jasonrivers.co.uk>",
+        "dependencies": {
+                "coffee-script" : "1.8.0",
+                "compression"   : "1.3.0",
+                "jquery"        : "2.1.3",
+                "node-sass"     : "2.0.0-beta",
+                "uglify-js"     : "2.4.16",
+                "express"       : "4.10.6",
+                "node-webkit-builder"   : "1.0.8"
+        },
+        "window": {
+                "title"         : "Tic-Tac-Pro",
+                "toolbar"       : false,
+                "width"         : 800,
+                "height"        : 500,
+                "position"      : "mouse"
+        },
+        "webkit": {
+                "plugin"        : true
+        },
+        "single-instance"       : "false"
+}

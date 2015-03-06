@@ -1,0 +1,25 @@
+// Variables
+
+$boardColour        : #000
+$boardBorderColour  : #ccc
+$circleColour       : #00c
+$crossColour        : #c00
+
+$borderWidth        : 5px
+
+
+#mainBoard
+  width   : 600px;
+  height  : 600px;
+
+div.cell
+  height      : 33%
+  width       : 32%
+  text-align  : center
+  display:inline-block
+div.cell[id^="b"]
+  border-left    : $borderWidth solid $boardBorderColour
+  border-right : $borderWidth solid $boardBorderColour
+div.cell[id$="2"]
+  border-top   : $borderWidth solid $boardBorderColour
+  border-bottom  : $borderWidth solid $boardBorderColour
