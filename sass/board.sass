@@ -23,3 +23,39 @@ div.cell[id^="b"]
 div.cell[id$="2"]
   border-top   : $borderWidth solid $boardBorderColour
   border-bottom  : $borderWidth solid $boardBorderColour
+
+
+.cross
+  width: 100px
+  height: 100px
+  position: relative
+  -webkit-transform: rotate(45deg)
+  -moz-transform: rotate(45deg)
+  -o-transform: rotate(45deg)
+  -ms-transform: rotate(45deg)
+  transform: rotate(45 deg)
+
+  &:before, &:after 
+    content: ""
+    position: absolute
+    z-index: -1
+    background: #d00
+
+  &:before 
+    left: 50%
+    width: 30%
+    margin-left: -15%
+    height: 100%
+
+  &:after
+    top: 50%
+    height: 30%
+    margin-top: -15%
+    width: 100%
+
+.circle
+  width:50px;
+  height:50px;
+  border-radius:50px;
+  background:transparent;
+  border:10px solid green;
