@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
 
+PATH=node_modules/.bin/:$PATH
+
+mkdir -p css js
+
 coffee -o js coffee/*.coffee
-sass -o css sass/*.sass
+node-sass -o css sass/*.sass

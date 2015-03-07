@@ -9,14 +9,14 @@ $borderWidth        : 5px
 
 
 #mainBoard
-  width   : 600px;
-  height  : 600px;
+  width   : 600px
+  height  : 600px
 
 div.cell
   height      : 33%
   width       : 32%
   text-align  : center
-  display:inline-block
+  display     : inline-block
 div.cell[data-coords^="b"]
   border-left   : $borderWidth solid $boardBorderColour
   border-right  : $borderWidth solid $boardBorderColour
@@ -25,37 +25,37 @@ div.cell[data-coords$="2"]
   border-bottom : $borderWidth solid $boardBorderColour
 
 
-.cross
-  width: 100px
-  height: 100px
-  position: relative
-  -webkit-transform: rotate(45deg)
-  -moz-transform: rotate(45deg)
-  -o-transform: rotate(45deg)
-  -ms-transform: rotate(45deg)
-  transform: rotate(45 deg)
+.cross div
+  width     : 100px
+  height    : 100px
+  position  : relative
+  -webkit-transform : rotate(45deg)
+  -moz-transform    : rotate(45deg)
+  -o-transform      : rotate(45deg)
+  -ms-transform     : rotate(45deg)
+  transform         : rotate(45deg)
 
   &:before, &:after 
-    content: ""
-    position: absolute
-    z-index: -1
+    content   : ""
+    position  : absolute
+    z-index   : -1
     background: #d00
 
   &:before 
-    left: 50%
-    width: 30%
-    margin-left: -15%
-    height: 100%
+    left        : 50%
+    width       : 30%
+    margin-left : -15%
+    height      : 100%
 
   &:after
-    top: 50%
-    height: 30%
-    margin-top: -15%
-    width: 100%
+    top         : 50%
+    height      : 30%
+    margin-top  : -15%
+    width       : 100%
 
-.circle
-  width:50px;
-  height:50px;
-  border-radius:50px;
-  background:transparent;
-  border:10px solid green;
+.circle div
+  width         :50px
+  height        :50px
+  border-radius :50px
+  background    :transparent
+  border        :10px solid green
