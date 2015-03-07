@@ -1,19 +1,17 @@
-boardRows = ["a","b","c"]
-boardCols = [1, 2, 3]
+boardRows = 'abc'.split ''
+boardCols = [1..3]
 
-board = (R, C) ->
-  results = []
-  results = results.concat r+c for r in R for c in C
-  results
+board = (R, C) -> [].concat (C.map (c) -> R.map (r) -> r + c)...
 
 brd = board boardRows, boardCols
 
-for cell in brd
-  textNode = document.createTextNode cell
-  node = document.createElement "div"
-  node.setAttribute "id", cell
-  node.setAttribute "class", "cell"
-  node.appendChild textNode
-  mb = document.getElementById("mainBoard")
-  mb.appendChild(node)
-  console.log cell
+$ ->
+  turn = 0; $('#turn').text 'O'
+  $ '#mainBoard'
+    .append brd.map((cell) -> "<div class='cell' data-coords='#{cell}'><div>#{cell}</div></div>").join ''
+    .on 'click', '.cell', ->
+      if !$(@).hasClass('circle') && !$(@).hasClass('cross')
+        $(@).addClass ['circle', 'cross'][turn]
+        turn = 1 - turn; $('#turn').text 'OX'[turn]
+      return
+  return
