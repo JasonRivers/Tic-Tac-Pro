@@ -12,9 +12,9 @@ npm install
 ./build.sh
 
 node_version=0.11.4
-b=build/tmp
+b=build/nw-tmp
 mkdir -p $b
-cp -R js css index.html $b
+cp -R js css assets index.html $b
 cp package.json $b
 
 desktop_app() {

@@ -7,6 +7,11 @@ brd = board boardRows, boardCols
 
 winningTriples = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
+playsound = (sound) ->
+  audio = document.getElementById 'sound'
+  audio.setAttribute 'src', 'assets/sounds/'+sound
+  audio.play()
+
 $ ->
   turn = 0
   $('#turnIcon')
@@ -19,6 +24,7 @@ $ ->
   $ '.gameBoard'
     .append brd.map((cell) -> "<div class='cell free' data-coords='#{cell}'><div></div></div>").join ''
     .on 'click', '.cell.free', ->
+      playsound 'click.ogg'
       if !$(@).hasClass('circle') && !$(@).hasClass('cross')
         $(@)
           .addClass myClass = ['circle', 'cross'][turn]
@@ -28,6 +34,7 @@ $ ->
         $('.circle div').css('border-width', $('.cell').height()/100*20;)
         for t in winningTriples
           if $s.eq(t[0]).hasClass(myClass) && $s.eq(t[1]).hasClass(myClass) && $s.eq(t[2]).hasClass(myClass)
+            playsound('badumtsh.ogg')
             $('.free').removeClass 'free'
             alert 'OX'[turn] + ' wins'
             break
