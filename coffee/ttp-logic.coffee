@@ -36,7 +36,6 @@ $ ->
           if $s.eq(t[0]).hasClass(myClass) && $s.eq(t[1]).hasClass(myClass) && $s.eq(t[2]).hasClass(myClass)
             playsound('badumtsh.ogg')
             $('.free').removeClass 'free'
-            alert 'OX'[turn] + ' wins'
             break
         turn = 1 - turn; 
         $('#turnIcon').text 'OX'[turn]

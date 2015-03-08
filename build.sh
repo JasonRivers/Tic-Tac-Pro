@@ -7,6 +7,11 @@ mkdir -p css js build/tmp
 
 js_files='
    node_modules/jquery/dist/cdn/jquery-2.1.3.min.js
+   node_modules/jquery-ui/core.js
+   node_modules/jquery-ui/widget.js
+   node_modules/jquery-ui/mouse.js
+   node_modules/jquery-ui/slider.js
+   node_modules/jquery-ui/dialog.js
    coffee/ttp-logic.coffee
 '
 
