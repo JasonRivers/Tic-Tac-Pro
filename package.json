@@ -4,6 +4,7 @@
         "description"           : "Tic-Tac-Toe for the pro!",
         "repository"            : ".",
         "author"                : "Jason Rivers <jason@jasonrivers.co.uk>",
+        "main"                  : "index.html",
         "dependencies": {
                 "coffee-script" : "1.8.0",
                 "compression"   : "1.3.0",
@@ -17,8 +18,10 @@
                 "title"         : "Tic-Tac-Pro",
                 "toolbar"       : false,
                 "width"         : 800,
-                "height"        : 500,
-                "position"      : "mouse"
+                "height"        : 600,
+                "position"      : "mouse",
+                "min_width"     : 200,
+                "min_height"    : 200
         },
         "webkit": {
                 "plugin"        : true
