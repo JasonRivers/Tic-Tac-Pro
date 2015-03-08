@@ -9,8 +9,9 @@ $borderWidth        : 5px
 
 
 #mainBoard
-  height      : 600px
+  height    : 600px
   width     : 600px
+  margin    : 0 auto
 
 
 div.cell
@@ -25,6 +26,15 @@ div.cell[data-coords$="2"]
   border-top    : $borderWidth solid $boardBorderColour
   border-bottom : $borderWidth solid $boardBorderColour
 
+#turn
+  border        : 1px solid #ccc
+  border-radius :  4px
+  width         : 100px
+  margin        : 0 auto
+  text-align    : center
+
+  &:before
+    content     : "Turn: "
 
 .cross div
   width     : 100%
