@@ -28,13 +28,19 @@ div.cell[data-coords$="2"]
   border-top    : $borderWidth solid $boardBorderColour
   border-bottom : $borderWidth solid $boardBorderColour
 
-#turn
-  border        : 1px solid #ccc
-  border-radius :  4px
+#turnIcon
   width         : 100px
-  margin        : 0 auto
-  text-align    : center
+  height        : 100px
 
+#turn
+  width         : 100px;
+  text-align    : center
+  border        : 1px solid #ccc
+  border-radius : 4px
+  position      : absolute
+  left          : 10px
+  top           : 10px
+  z-index       : 1000
   &:before
     content     : "Turn: "
 
