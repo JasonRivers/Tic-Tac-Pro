@@ -1,9 +1,11 @@
 boardRows = 'abc'.split ''
 boardCols = [1..3]
+mode      = "pro"
+board     = "main"
 
-board = (R, C) -> [].concat (C.map (c) -> R.map (r) -> r + c)...
+boardcells = (R, C) -> [].concat (C.map (c) -> R.map (r) -> r + c)...
 
-brd = board boardRows, boardCols
+brd = boardcells boardRows, boardCols
 
 winningTriples = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
@@ -23,28 +25,35 @@ $ ->
       .css 'border-width', $('#turnIcon.circle').width()/100*20
   $ '.gameBoard'
     .append brd.map((cell) -> "<div class='cell free' data-coords='#{cell}'><div></div></div>").join ''
-    .on 'click', '.cell.free', ->
-      playsound 'click.ogg'
-      if !$(@).hasClass('circle') && !$(@).hasClass('cross')
-        $(@)
-          .addClass myClass = ['circle', 'cross'][turn]
-          .removeClass 'free'
+    .on 'click', '.cell.free',(event) ->
+      if board == "main"
+        board = $(@).attr 'data-coords'
+        $('#boardTitle span').html board
+      else
+        playsound 'click.ogg'
+        if !$(@).hasClass('circle') && !$(@).hasClass('cross')
+          $(@)
+            .addClass myClass = ['circle', 'cross'][turn]
+            .removeClass 'free'
 
-        $s = $(@).parent().children() # siblings, including self
-        $('.circle div').css('border-width', $('.cell').height()/100*20;)
-        for t in winningTriples
-          if $s.eq(t[0]).hasClass(myClass) && $s.eq(t[1]).hasClass(myClass) && $s.eq(t[2]).hasClass(myClass)
-            playsound('badumtsh.ogg')
-            $('.free').removeClass 'free'
-            break
-        turn = 1 - turn; 
-        $('#turnIcon').text 'OX'[turn]
-          .removeClass 'circle'
-          .removeClass 'cross'
-          .addClass myClas = ['circle',' cross'][turn]
-          .html '<div></div>'
-          $('#turnIcon.circle div')
-            .css 'border-width', $('#turnIcon.circle').width()/100*20
+          $s = $(@).parent().children() # siblings, including self
+          $('.circle div').css('border-width', $('.cell').height()/100*20;)
+          for t in winningTriples
+            if $s.eq(t[0]).hasClass(myClass) && $s.eq(t[1]).hasClass(myClass) && $s.eq(t[2]).hasClass(myClass)
+              playsound('badumtsh.ogg')
+              $('.free').removeClass 'free'
+              break
+          turn = 1 - turn; 
+          $('#turnIcon')
+            .removeClass 'circle'
+            .removeClass 'cross'
+            .addClass myClas = ['circle',' cross'][turn]
+            .html '<div></div>'
+            $('#turnIcon.circle div')
+              .css 'border-width', $('#turnIcon.circle').width()/100*20
+          if mode == "pro"
+            board = "main"
+            $('#boardTitle span').html board
       return
 
   $ window
