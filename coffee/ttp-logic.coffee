@@ -10,14 +10,18 @@ winningTriples = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6
 $ ->
   turn = 0; $('#turn').text 'O'
   $ '#mainBoard'
-    .append brd.map((cell) -> "<div class='cell' data-coords='#{cell}'><div></div></div>").join ''
-    .on 'click', '.cell', ->
+    .append brd.map((cell) -> "<div class='cell free' data-coords='#{cell}'><div></div></div>").join ''
+    .on 'click', '.cell.free', ->
       if !$(@).hasClass('circle') && !$(@).hasClass('cross')
-        $(@).addClass myClass = ['circle', 'cross'][turn]
+        $(@)
+          .addClass myClass = ['circle', 'cross'][turn]
+          .removeClass 'free'
+
         $s = $(@).parent().children() # siblings, including self
         $('.circle div').css('border-width', $('.cell').height()/100*20;)
         for t in winningTriples
           if $s.eq(t[0]).hasClass(myClass) && $s.eq(t[1]).hasClass(myClass) && $s.eq(t[2]).hasClass(myClass)
+            $('.free').removeClass 'free'
             alert 'OX'[turn] + ' wins'
             break
         turn = 1 - turn; $('#turn').text 'OX'[turn]
