@@ -92,7 +92,7 @@ if process? then do ->
                     Game.status.score.circle++
 
                   $ 'body'
-                    .append('<div id="dialog">'+['Circle','Cross'][turn]+' wins!</div>')
+                    .append('<div id="dialog" class="dialogbox">'+['Circle','Cross'][turn]+' wins!</div>')
                   $ '#dialog'
                     .dialog
                       'draggable' : false
@@ -106,7 +106,7 @@ if process? then do ->
                             .removeClass 'cross'
                             .addClass 'free'
                           $(@).dialog 'destroy'
-                          $('#dialog').remove()
+                          $('.dialogbox').remove()
                 break
             Game.status.cells.main.free = [] ## Reset
             $('.free').each ->
