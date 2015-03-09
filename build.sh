@@ -16,6 +16,7 @@ js_files='
    node_modules/jquery-ui/button.js
    node_modules/jquery-ui/slider.js
    node_modules/jquery-ui/dialog.js
+   assets/js/hotkeys.js
    coffee/ttp-logic.coffee
 '
 
