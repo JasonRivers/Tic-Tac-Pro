@@ -7,8 +7,9 @@ npm install
 
 node_version=0.11.4
 b=build/nw-tmp
-mkdir -p $b
-cp -R js css assets index.html $b
+mkdir -p $b $b/assets
+cp -R js css index.html $b
+cp -R assets/sounds $b/assets
 cp package.json $b
 
 desktop_app() {
