@@ -17,6 +17,8 @@ playsound = (sound) ->
 
 $ ->
   turn = 0
+  $('#gameMode span').html mode
+  $('#boardTitle span').html board
   $('#turnIcon')
     .removeClass 'circle'
     .removeClass 'cross'
