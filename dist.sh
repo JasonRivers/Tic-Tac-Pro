@@ -1,12 +1,6 @@
 #!/bin/bash
 set -e
 
-platform=$@
-
-if [ "$platform" = "" ]; then
-  platform="linux64"
-fi
-
 npm install
 
 ./build.sh
@@ -30,7 +24,7 @@ desktop_app() {
 .
 }
 
-desktop_app $platform
+desktop_app linux64
 
 for bits in 32 64; do 
   d=cache/$node_version/linux$bits
