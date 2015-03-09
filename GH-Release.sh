@@ -5,9 +5,11 @@ set -e
 ./dist.sh osx linux win
 
 # create JSON
+BUILDDIR=build
+PROJECT=`cat package.json | awk '/name/ {print $3}' | sed 's/\"//g;s/,//g'`
 TMP_JSON=/tmp/GH-Publish.json
-BASE_VERSION="0.0.1"
-VERSION="${BASE_VERSION}.`git rev-list HEAD --count`"
+BASE_VERSION=`cat package.json | awk '/version/ {print $3}' | sed 's/\"//g;s/,//'`
+VERSION="${BASE_VERSION}-`git rev-list HEAD --count`"
 
 if [ -s GHTOKEN ]; then
   TOKEN="`cat GHTOKEN`"
@@ -21,7 +23,7 @@ cat >$TMP_JSON <<.
   "target_commitish": "master",
   "name": "v$VERSION",
   "body": $(
-    ( echo -e 'Release of Tic-Tac-Pro V'${VERSION}'\n\nChangelog:'; git log --format='%s' $(git tag | tail -n 1).. ) \
+    ( echo -e 'Release of '${PROJECT}' V'${VERSION}'\n\nChangelog:'; git log --format='%s' $(git tag | tail -n 1).. ) \
       | grep -v -i todo | python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'
   ),
   "draft": true,
@@ -37,7 +39,7 @@ RELEASE_ID=`grep '"id"' $TMP_RESPONSE | head -1 | sed 's/.*: //;s/,//'`
 
 echo "created release with id: $RELEASE_ID"
 
-for DIR in `ls build/Tic-Tac-Pro`; do
+for DIR in `ls ${BUILDDIR}/${PROJECT}`; do
   OS=`echo ${DIR} | sed 's/64//;s/32//'`
   BITS=`echo ${DIR} | sed 's/osx//;s/linux//;s/win//'`
 
@@ -53,9 +55,9 @@ for DIR in `ls build/Tic-Tac-Pro`; do
       ;;
   esac
 
-  ZIP=TTP-${VERSION}-${OSNAME}.zip
+  ZIP=${PROJECT}-${VERSION}_${OSNAME}.zip
   TMP_ZIP=/tmp/$ZIP
-  cd build/Tic-Tac-Pro/$DIR
+  cd ${BUILDDIR}/${PROJECT}/$DIR
   echo "creating $TMP_ZIP"
   zip -q -r "$TMP_ZIP" .
   echo 'uploading to Github'
