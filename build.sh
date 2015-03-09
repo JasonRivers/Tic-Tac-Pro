@@ -10,6 +10,10 @@ js_files='
    node_modules/jquery-ui/core.js
    node_modules/jquery-ui/widget.js
    node_modules/jquery-ui/mouse.js
+   node_modules/jquery-ui/position.js
+   node_modules/jquery-ui/draggable.js
+   node_modules/jquery-ui/resizable.js
+   node_modules/jquery-ui/button.js
    node_modules/jquery-ui/slider.js
    node_modules/jquery-ui/dialog.js
    coffee/ttp-logic.coffee
